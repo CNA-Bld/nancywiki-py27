@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{wiki.title}} | {{config.title}}{% endblock %}
+
+{% block navlinks %}
+<a href="/{{wiki.url}}?edit=1">Edit</a>
+{% endblock %}
+
+{% block content %}
+<div id="content">
+    {% autoescape off %}{{ wiki.html }}{% endautoescape %}
+</div>
+<div id="info">
+    Last Modified by {{wiki.author.nickname}}, at {{wiki.addtime|timezone:8|date:"Y-m-j H:i"}}
+</div>
+{% endblock %}
+
+{% block comments %}
+<div id="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        disqus_developer = 1;
+        (function () {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://nancywiki.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=nancywiki">comments powered
+        by Disqus.</a></noscript>
+</div>
+{% endblock %}

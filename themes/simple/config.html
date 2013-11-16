@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Settings | {{config.title}}{% endblock %}
+
+{% block navlinks %}
+<a href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div>
+    <form action="/config/" method="post">
+        <table class="wikiTable">
+            <tr>
+                <td>Domain Name: </td>
+                <td><input class="input_text" size=100 type="text" name="domain" value="{{config.domain}}" /></td>
+            </tr>
+            <tr>
+                <td>Site Title: </td>
+                <td><input class="input_text" size=100 type="text" name="title" value="{{config.title}}" /></td>
+            </tr>
+            <tr>
+                <td width="100px">Skin: </td>
+                <td>
+                    <select name="theme">
+                        <option selected="selected">simple</option>
+                        <option>plain</option>>
+                    </select>
+                </td>
+            </tr>
+            <tr><td col="2"></td></tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Save" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock %}

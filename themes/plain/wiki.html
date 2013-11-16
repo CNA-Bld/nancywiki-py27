@@ -1,0 +1,32 @@
+<!DOCTYPE html public "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head">
+    <title>{{wiki.title}}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- <link id="MainCss" type="text/css" rel="stylesheet" href="/static/css/style.css" /> -->
+</head>
+<body>
+    <div>
+    <a href="{{wiki.url}}?edit=1">Edit</a>
+    <a href="/config/">Settings</a>
+    {% if user %}
+    {{user.nickname}} <a href="{{logout_url}}">Logout</a>
+    {% else %}
+    <a href="{{login_url}}">Login</a>
+    {% endif %}
+    </div>
+    <div>{% autoescape off %}{{ wiki.html }}{% endautoescape %}</div>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        disqus_developer = 1;
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://nancywiki.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=nancywiki">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>    
+</body>
+</html>
